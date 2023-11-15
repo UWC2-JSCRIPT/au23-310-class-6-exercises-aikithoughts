@@ -11,10 +11,13 @@ $(document).ready(function () {
    * Delete element when delete link clicked
    */
 
-  $('ul').on('click', '.delete', function(e) {
-    $(this).parent().remove();
-  })
+  $('ul').on('click', '.delete', function (e) {
+    var $parentLi = $(this).parent(); // Cache the parent <li> element
 
+    $parentLi.fadeOut('slow', function () {
+      $parentLi.remove();
+    });
+  });
   /**
    * Adds new list item to <ul>
    */
@@ -33,7 +36,7 @@ $(document).ready(function () {
   // add listener for add
   $('.add-item').on('click', addListItem);
 
-  function createDeleteButton(){
+  function createDeleteButton() {
     return $('<a>', {
       class: 'delete',
       text: 'Delete'
